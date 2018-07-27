@@ -1,4 +1,5 @@
 #include <iostream>
+#include <queue>
 using namespace std;
 
 class heapNode{
@@ -24,6 +25,7 @@ struct compare {
         }
 };
 
+
 void print(struct heapNode *base, string str){
     if (!base)
         return;
@@ -31,9 +33,10 @@ void print(struct heapNode *base, string str){
     if (base->data != '$')
         cout << base->data << ": " << str << "\n";
 
-    printCodes(base->left, str + "0");
-    printCodes(base->right, str + "1");
+    print(base->l, str + "0");
+    print(base->r, str + "1");
 }
+
 
 void Huffman(char data[], int freq[], int size)
 {
@@ -53,8 +56,8 @@ void Huffman(char data[], int freq[], int size)
 
         top = new heapNode('$', left->freq + right->freq);
 
-        top->left = left;
-        top->right = right;
+        top->l = left;
+        top->r = right;
 
         minHeap.push(top);
     }
@@ -62,3 +65,15 @@ void Huffman(char data[], int freq[], int size)
     print(minHeap.top(), "");
 }
 
+int main()
+{
+
+    char arr[] = { 'a', 'b', 'c', 'd', 'e', 'f' };
+    int freq[] = { 5, 9, 12, 13, 16, 45 };
+
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+    Huffman(arr, freq, size);
+
+    return 0;
+}
