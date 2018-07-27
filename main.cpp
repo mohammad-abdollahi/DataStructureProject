@@ -24,6 +24,17 @@ struct compare {
         }
 };
 
+void print(struct heapNode *base, string str){
+    if (!base)
+        return;
+
+    if (base->data != '$')
+        cout << base->data << ": " << str << "\n";
+
+    printCodes(base->left, str + "0");
+    printCodes(base->right, str + "1");
+}
+
 void Huffman(char data[], int freq[], int size)
 {
     struct heapNode *left, *right, *top;
