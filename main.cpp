@@ -68,12 +68,23 @@ void Huffman(char data[], int freq[], int size)
 int main()
 {
 
-    char arr[] = { 'a', 'b', 'c', 'd', 'e', 'f' };
-    int freq[] = { 5, 9, 12, 13, 16, 45 };
+    char arr[27] = {};
+    int freq[27] = {};
+    int i = 0, size=0;
+    cout<<"Enter the number of characters:";
+    cin>>size;
 
-    int size = sizeof(arr) / sizeof(arr[0]);
 
-    Huffman(arr, freq, size);
+    while(i<size)
+    {
+        cout<<"Enter character:";
+        cin>>arr[i];
+        cout<<"Enter frequency:";
+        cin>>freq[i];
+        i++;
+    }
+
+    Huffman(arr, freq, i);
 
     return 0;
 }
